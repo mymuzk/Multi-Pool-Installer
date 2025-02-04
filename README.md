@@ -1,15 +1,11 @@
-## Update regarding this repo and the future of it. As many of you know I have been gone for many months. Things were going great in my life and then tragedy stuck, and no I am not talking about COVID. Im not going to spin a sad story or give any other details other then, depression is a real thing. Anyone you know or yourself may suffer terribly from it. Don't ignore the signs, don't laugh it off, or take their word that they are ok if its a relative or friend because they are not ok. And don't go at it alone if you suffer silently from it. For those that feel the desire this all doantion addresses have been updated. 
 
-## There are several forks of this repo now that are being maintained by some great people and plenty of help on the discord. Be safe eveyone. - CPB
+## 终极加密货币服务器安装程序！🚀
 
+## 这是公开测试版 - 所有功能尚未最终确定！
 
-## Ultimate Crypto-Server Setup Installer! 🚀
+一站式加密货币服务器需求安装程序。
 
-## This is opened as a public beta - all features are not final!
-
-All in one installer for your crypto-server needs.
-
-**Ultimate Crypto-Server Setup Installer!** Automates most of the tedious tasks of the following releases:
+**终极加密货币服务器安装程序！** 自动化完成以下版本的繁琐任务：
 
 <img align="right" src="./.assets/install.gif?raw=true" height="215">
 
@@ -17,94 +13,94 @@ All in one installer for your crypto-server needs.
 * NOMP
 * MPOS
 * CryptoNote-Nodejs
-* Generic faucet script
+* 通用水龙头脚本
 
-## TOC
+## 目录
 
-- [Installation](#-installation)
-- [Usage](#-usage)
-- [YiiMP Single Server Install](#-yiimp-single-server-install)
-	- [Commands](#-commands)
-- [YiiMP Multi-Server Install](#-yiimp-multi-server-install)
-- [NOMP Install](#-nomp-install)
-- [MPOS Install](#-mpos-install)
-- [CryptoNote-Nodejs Install](#-cryptonote-nodejs-install)
-- [Generic faucet script](#-generic-faucet-script)
-- [Credits](#-credits)
-- [License](#-license)
-- [Support](#-support)
+- [安装](#-installation)
+- [使用方法](#-usage)
+- [YiiMP 单服务器安装](#-yiimp-single-server-install)
+  - [命令](#-commands)
+- [YiiMP 多服务器安装](#-yiimp-multi-server-install)
+- [NOMP 安装](#-nomp-install)
+- [MPOS 安装](#-mpos-install)
+- [CryptoNote-Nodejs 安装](#-cryptonote-nodejs-install)
+- [通用水龙头脚本](#-generic-faucet-script)
+- [致谢](#-credits)
+- [许可证](#-license)
+- [支持](#-support)
 
-## 💾 Installation
+## 💾 安装
 
-Installation:
+安装要求：
 
-Requires a fresh Ubuntu 16.04 or Ubuntu 18.04 installation.
-
-```
-curl https://raw.githubusercontent.com/cryptopool-builders/Multi-Pool-Installer/master/bootstrap.sh | bash
-```
-
-Update:
-
-When a new release is made public updating is as simple as running the same command as above.
+需要一个全新的 Ubuntu 20.04 或更高版本的系统。
 
 ```
 curl https://raw.githubusercontent.com/cryptopool-builders/Multi-Pool-Installer/master/bootstrap.sh | bash
 ```
 
-## ▶️ Usage
+更新：
 
-You may run the installer under root or an existing account. If you already have a user account created on your server that account must already be part of the sudo group.
+当有新版本发布时，更新只需要运行与安装相同的命令。
 
-If you are running as root the installer will prompt you to create a new account.
+```
+curl https://raw.githubusercontent.com/cryptopool-builders/Multi-Pool-Installer/master/bootstrap.sh | bash
+```
+
+## ▶️ 使用方法
+
+你可以在 root 用户或现有账户下运行安装程序。如果你已经在服务器上创建了用户账户，该账户必须已经是 sudo 组的成员。
+
+如果你以 root 身份运行，安装程序会提示你创建一个新账户。
 
 <p align="center">
   <img src="./.assets/naughty.png" alt="naughty"
        width="555" height="185">
 </p>
 
-After creating the new user account or updating your existing account, you MUST reboot the machine in order for the accounts permissions to be updated properly.
+创建新用户账户或更新现有账户后，你必须重启机器以正确更新账户权限。
 
-After rebooting the server to your user to start the installer type:
+重启服务器后，使用你的用户账户输入以下命令启动安装程序：
 ```
 multipool
 ```
 
-## ⚙️ YiiMP Single Server Install
+## ⚙️ YiiMP 单服务器安装
 
-The Yiimp Single Server Install is recommend for private or very small pools. It is recommended to have at least 4GB ram in order to function properly.
-Setup is automated after the following questions are answered:
+YiiMP 单服务器安装推荐用于私人或非常小型的矿池。建议至少有 4GB 内存才能正常运行。
+回答以下问题后，安装过程将自动进行：
 
-Question | Default | Help
+问题 | 默认值 | 帮助
 :--|:-:|:--
-Are you using a domain name | no | If you plan to use something like example.com, make sure DNS is updated
-Are you using a sub-domain as the main domain | no | If you plan to use something like pool.example.com
-Domain Name | localhost | Change to your domain either example.com or pool.example.com
-Stratum Domain | stratum.domain.name | This should be something other then your domain name
-Install SSL | yes | Installs a 90 day cert from LetsEncrypt
-Support Email | root@localhost | Used to send you system alerts
-Your Public IP | pulls ip last used to acess web server | To verify go to http://www.whatsmyip.org
-DB Root Password | autogenerated 36 character password | Default mysql root password
-DB Panel User Password | autogenerated 36 character password | Default mysql frontend password
-DB Stratum Password | autogenerated 36 character password | Default mysql stratum password
-Admin Portal Access Location | AdminPortal | to access example.com/site/AdminPortal
+是否使用域名 | 否 | 如果你计划使用类似 example.com 的域名，请确保 DNS 已更新
+是否使用子域名作为主域名 | 否 | 如果你计划使用类似 pool.example.com 的域名
+域名 | localhost | 更改为你的域名，如 example.com 或 pool.example.com
+矿池域名 | stratum.domain.name | 这应该与你的域名不同
+安装 SSL | 是 | 从 LetsEncrypt 安装 90 天的证书
+支持邮箱 | root@localhost | 用于发送系统警报
+你的公网 IP | 自动获取最后访问 Web 服务器的 IP | 可以到 http://www.whatsmyip.org 验证
+数据库 Root 密码 | 自动生成 36 位密码 | 默认 mysql root 密码
+数据库面板用户密码 | 自动生成 36 位密码 | 默认 mysql 前端密码
+数据库矿池密码 | 自动生成 36 位密码 | 默认 mysql 矿池密码
+管理门户访问位置 | AdminPortal | 访问方式 example.com/site/AdminPortal
 
-Installation will take about 25 minutes to fully complete. You will get a message on the screen letting you know it has finished.
+安装大约需要 25 分钟才能完全完成。屏幕上会显示完成消息。
 
-#### A server reboot is REQUIRED after the installer is completed to finalize the installation process!
+#### 安装完成后必须重启服务器以完成安装过程！
 
-After rebooting the server log back in to your user account. And you will be greeted by the following screen:
+重启服务器并登录到你的用户账户后，你会看到以下界面：
 
 <p align="center">
   <img src="./.assets/first_reboot.png" alt="first_reboot"
        width="771" height="635">
 </p>
 
-#### On first reboot it may take up to 10 minutes before the cron screens auto-start. After waiting ten minutes type:
+#### 首次重启后，cron 屏幕可能需要最多 10 分钟才能自动启动。等待十分钟后输入：
 ```
 motd
 ```
-and you should see this:
+你应该会看到这个：
 
 <p align="center">
   <img src="./.assets/running.png" alt="running"
@@ -155,30 +151,28 @@ yiimp
 ```
 and get to know those commands as well!
 
-## 🤖 YiiMP Multi-Server Install
+## 🤖 YiiMP 多服务器安装
 
-The YiiMP Multi-Server Install is recommended for those that want to run larger public pools. This offers the most security and is a lot more complex on the setup.
+以下两个表格展示了多服务器设置的推荐配置：
 
-The following two tables show you the perfered server setup for the multi-server setup:
-
-Role | OS Version | Recommended Ram
+角色 | 系统版本 | 推荐内存
 :--|:--|:-:
-Web Server | Ubuntu 16.04 or Ubuntu 18.04 | 2GB
-DB & Stratum Server | Ubuntu 16.04 or Ubuntu 18.04 | 4GB
-Daemon Server | Ubuntu 16.04 or Ubuntu 18.04 | 8GB+
+Web 服务器 | Ubuntu 20.04 或更高版本 | 2GB
+数据库和矿池服务器 | Ubuntu 20.04 或更高版本 | 4GB
+钱包服务器 | Ubuntu 20.04 或更高版本 | 8GB+
 
- or
+或者
 
-Role | OS Version | Recommended Ram
+角色 | 系统版本 | 推荐内存
 :--|:--|:-:
-Web Server | Ubuntu 16.04 or Ubuntu 18.04 | 2GB
-DB Server | Ubuntu 16.04 or Ubuntu 18.04 | 2GB
-Stratum Server | Ubuntu 16.04 or Ubuntu 18.04 | 2GB
-Daemon Server | Ubuntu 16.04 or Ubuntu 18.04 | 8GB+
+Web 服务器 | Ubuntu 20.04 或更高版本 | 2GB
+数据库服务器 | Ubuntu 20.04 或更高版本 | 2GB
+矿池服务器 | Ubuntu 20.04 或更高版本 | 2GB
+钱包服务器 | Ubuntu 20.04 或更高版本 | 8GB+
 
-It is also highly recommended to use a provider that offers private IP's between your servers. If your provider only offers public IP's you must install Wireguard (Installer provided). This will setup a secure VPN connection between your servers for the backend communication.
+强烈建议使用提供服务器之间私有 IP 的服务商。如果你的服务商只提供公网 IP，你必须安装 Wireguard（安装程序已提供）。这将为你的服务器之间的后端通信建立安全的 VPN 连接。
 
-#### If installing wireguard do not modify the default private IP's that are provide. Installation will fail!
+#### 如果安装 Wireguard，请不要修改提供的默认私有 IP，否则安装将失败！
 
 Just like with the single server install there must be a user account created. If you attempt to run the script under root, it will force you to create a new user account and log in to it.
 

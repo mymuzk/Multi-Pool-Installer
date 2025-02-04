@@ -9,6 +9,24 @@
 #
 #########################################################
 
+# 检查是否为 Ubuntu 20.04 或更高版本
+if [ -f /etc/os-release ]; then
+    . /etc/os-release
+    if [ "$ID" != "ubuntu" ]; then
+        echo "错误: 此脚本仅支持 Ubuntu 系统"
+        echo "当前系统: $PRETTY_NAME"
+        exit 1
+    fi
+    
+    # 将版本号转换为数字进行比较
+    version=$(echo "$VERSION_ID" | awk -F. '{ print $1 $2 }')
+    if [ "$version" -lt 2004 ]; then
+        echo "错误: 此脚本仅支持 Ubuntu 20.04 及以上版本"
+        echo "当前系统版本: $PRETTY_NAME"
+        exit 1
+    fi
+fi
+
 # 如果没有设置 TAG 环境变量，则使用默认版本
 if [ -z "${TAG}" ]; then
 	TAG=v2.55
