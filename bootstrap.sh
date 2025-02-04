@@ -1,29 +1,33 @@
 #!/usr/bin/env bash
 
-
 #########################################################
-# Source https://mailinabox.email/ https://github.com/mail-in-a-box/mailinabox
-# Updated by cryptopool.builders for crypto use...
-# This script is intended to be run like this:
+# 来源: https://mailinabox.email/ https://github.com/mail-in-a-box/mailinabox
+# 由 cryptopool.builders 更新用于加密货币挖矿...
+# 此脚本的预期运行方式:
 #
 #   curl https://raw.githubusercontent.com/cryptopool-builders/Multi-Pool-Installer/master/bootstrap.sh | bash
 #
 #########################################################
+
+# 如果没有设置 TAG 环境变量，则使用默认版本
 if [ -z "${TAG}" ]; then
 	TAG=v2.55
 fi
 
-
-# Clone the MultiPool repository if it doesn't exist.
+# 检查并克隆 MultiPool 仓库（如果不存在）
 if [ ! -d $HOME/multipool ]; then
+	# 检查是否安装了 git，如果没有则安装
 	if [ ! -f /usr/bin/git ]; then
 		echo Installing git . . .
+		# 更新软件包列表
 		apt-get -q -q update
+		# 静默安装 git，不需要用户交互
 		DEBIAN_FRONTEND=noninteractive apt-get -q -q install -y git < /dev/null
 		echo
 	fi
 
 	echo Downloading MultiPool Installer ${TAG}. . .
+	# 克隆指定版本的仓库，使用 --depth 1 只获取最新版本以节省空间
 	git clone \
 		-b ${TAG} --depth 1 \
 		https://github.com/cryptopool-builders/multipool_setup \
@@ -33,14 +37,18 @@ if [ ! -d $HOME/multipool ]; then
 	echo
 fi
 
-# Set permission and change directory to it.
+# 设置权限并切换到安装目录
 cd $HOME/multipool/install
 
-# Update it.
+# 更新仓库
+# 确保 git 目录的所有权属于当前用户
 sudo chown -R $USER $HOME/multipool/install/.git/
+# 检查当前版本是否需要更新
 if [ "${TAG}" != `git describe --tags` ]; then
 	echo Updating MultiPool Installer to ${TAG} . . .
+	# 强制获取指定标签的更新
 	git fetch --depth 1 --force --prune origin tag ${TAG}
+	# 切换到指定版本
 	if ! git checkout -q ${TAG}; then
 		echo "Update failed. Did you modify something in `pwd`?"
 		exit
@@ -48,5 +56,5 @@ if [ "${TAG}" != `git describe --tags` ]; then
 	echo
 fi
 
-# Start setup script.
+# 启动安装脚本
 bash $HOME/multipool/install/start.sh
